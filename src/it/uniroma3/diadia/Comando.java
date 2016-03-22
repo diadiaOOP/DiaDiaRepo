@@ -15,11 +15,13 @@ import java.util.Scanner;
  */
 
 public class Comando {
-    private String nome;
-    private String parametro;
+	private String nome;
+	private String parametro;
+	private Scanner scannerDiParole;
 
-    public Comando(String istruzione) {
-		Scanner scannerDiParole = new Scanner(istruzione);
+
+	public Comando(String istruzioneSuInteraRiga) {
+		scannerDiParole = new Scanner(istruzioneSuInteraRiga);
 
 		// prima parola: nome del comando
 		if (scannerDiParole.hasNext())
@@ -28,17 +30,17 @@ public class Comando {
 		// seconda parola: eventuale parametro
 		if (scannerDiParole.hasNext())
 			this.parametro = scannerDiParole.next();
-    }
+	}
 
-    public String getNome() {
-        return this.nome;
-    }
+	public String getNome() {
+		return this.nome;
+	}
 
-    public String getParametro() {
-        return this.parametro;
-    }
+	public String getParametro() {
+		return this.parametro;
+	}
 
-    public boolean sconosciuto() {
-        return (this.nome == null);
-    }
+	public boolean sconosciuto() {
+		return (this.nome == null);
+	}
 }

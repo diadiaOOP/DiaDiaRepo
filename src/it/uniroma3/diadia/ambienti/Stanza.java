@@ -81,7 +81,7 @@ public class Stanza {
 	 * @return la descrizione della stanza
 	 */
 	public String getDescrizione() {
-		return this.toString();
+		return "Ti trovi in " + this.toString();
 	}
 
 	/**
@@ -90,7 +90,7 @@ public class Stanza {
 	 */
 	public Attrezzo[] getAttrezzi() {
 		return this.attrezzi;
-	} 
+	}
 
 	/**
 	 * Mette un attrezzo nella stanza.
@@ -122,25 +122,11 @@ public class Stanza {
 				s += " " + direzione;
 		s += "\nAttrezzi nella stanza: ";
 		for (Attrezzo attrezzo : this.attrezzi) {
-			if (attrezzo != null)
+			if (attrezzo!=null)
 				s += attrezzo.toString()+" ";
 		}
 		return s;
 	}
-	
-	/**
-     * Restituisce la descrizione degli oggetti contenuti all'interno 
-     * della stanza corrente
-     * @return string descrizione degli attrezzi 
-     */
-	public String attrezziToString(){
-    	String s="";
-    	for (Attrezzo attrezzo : this.attrezzi) {
-    		if(attrezzo!=null)
-    			s += attrezzo.toString()+" ";
-    	}
-    	return s;
-    }
 
 	/**
 	 * Controlla se un attrezzo esiste nella stanza (uguaglianza sul nome).
@@ -150,8 +136,10 @@ public class Stanza {
 		boolean trovato;
 		trovato = false;
 		for (Attrezzo attrezzo : this.attrezzi) {
-			if (attrezzo.getNome().equals(nomeAttrezzo))
-				trovato = true;
+			if (attrezzo!=null) {
+				if (attrezzo.getNome().equals(nomeAttrezzo))
+					trovato = true;
+			}
 		}
 		return trovato;
 	}
@@ -166,18 +154,12 @@ public class Stanza {
 		Attrezzo attrezzoCercato;
 		attrezzoCercato = null;
 		for (Attrezzo attrezzo : this.attrezzi) {
-			if (attrezzo != null && attrezzo.getNome().equals(nomeAttrezzo))
-				attrezzoCercato = attrezzo;
-		}
-		return attrezzoCercato;	
-	}
-
-	public void stampaAttrezzi() {
-		for(Attrezzo attrezzo : this.attrezzi) {
-			if(attrezzo != null) {
-				System.out.println(attrezzo.toString());
+			if (attrezzo!=null) {
+				if (attrezzo.getNome().equals(nomeAttrezzo))
+					attrezzoCercato = attrezzo;
 			}
 		}
+		return attrezzoCercato;	
 	}
 
 	/**
@@ -185,22 +167,24 @@ public class Stanza {
 	 * @param nomeAttrezzo
 	 * @return true se l'attrezzo e' stato rimosso, false altrimenti
 	 */
-	public boolean removeAttrezzo(String attrezzo) {
-		boolean rimosso = false;
-		
-		for (int i = 0; i < this.numeroAttrezzi-1;i++){
-			if(rimosso){
-				this.attrezzi[i--] = this.attrezzi[i];}
-			if(this.attrezzi[i].getNome().equals(attrezzo) && !rimosso){
-				this.attrezzi[i] = null;
-				rimosso = true;
+	public boolean removeAttrezzo(Attrezzo attrezzo) {
+		if (this.numeroAttrezzi==0||(!this.hasAttrezzo(attrezzo.getNome())))
+			return false;
+		else {
+			for (int i=0; i<numeroAttrezzi; i++) {
+				if (this.attrezzi[i].equals(attrezzo)); {
+					this.attrezzi[i] = null;
+					this.numeroAttrezzi--;
+				}
 			}
 		}
-		if(rimosso) numeroAttrezzi--;
-		return rimosso;
+		return true;
 	}
 
-
+	/**
+	 * Restituisce le possibili direzioni della stanza.
+	 * @return direzioni della stanza
+	 */
 	public String[] getDirezioni() {
 		String[] direzioni = new String[this.numeroStanzeAdiacenti];
 		for(int i=0; i<this.numeroStanzeAdiacenti; i++)

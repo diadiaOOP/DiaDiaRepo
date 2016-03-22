@@ -1,31 +1,29 @@
 package it.uniroma3.diadia;
 
+import it.uniroma3.diadia.giocatore.*;
+
 import it.uniroma3.diadia.ambienti.Labirinto;
 import it.uniroma3.diadia.ambienti.Stanza;
-import it.uniroma3.diadia.giocatore.Giocatore;
 
 /**
  * Questa classe modella una partita del gioco
  *
  * @author  Paolo Merialdo, Valter Crescenzi (da un'idea di Michael Kolling and David J. Barnes)
  * @see Stanza
- * @see Labirinto
  * @version 0.1
  */
 
 public class Partita {
+	private Labirinto labirinto;
 	private Stanza stanzaCorrente;
-	//private Stanza stanzaVincente;
-	private Labirinto facolta;
 	private boolean finita;
-	public Giocatore studente;
+	private Giocatore giocatore;
 
-	
 	public Partita(){
-		this.facolta = new Labirinto();
+		this.labirinto = new Labirinto();
+		this.stanzaCorrente = this.labirinto.getStanzaIniziale();
 		this.finita = false;
-		this.stanzaCorrente=this.facolta.getIngresso();
-		this.studente = new Giocatore();
+		this.giocatore = new Giocatore();
 	}
 
 	public void setStanzaCorrente(Stanza stanzaCorrente) {
@@ -35,13 +33,21 @@ public class Partita {
 	public Stanza getStanzaCorrente() {
 		return this.stanzaCorrente;
 	}
-	
+
+	public Giocatore getGiocatore() {
+		return giocatore;
+	}
+
+	public void setGiocatore(Giocatore giocatore) {
+		this.giocatore = giocatore;
+	}
+
 	/**
 	 * Restituisce vero se e solo se la partita e' stata vinta
 	 * @return vero se partita vinta
 	 */
 	public boolean vinta() {
-		return this.getStanzaCorrente()==this.facolta.getUscita();
+		return this.getStanzaCorrente()==this.labirinto.getStanzaVincente();
 	}
 
 	/**
@@ -49,28 +55,18 @@ public class Partita {
 	 * @return vero se partita finita
 	 */
 	public boolean isFinita() {
-		return finita || vinta() || (this.studente.getCfu() == 0);
+		return finita || vinta() || (this.giocatore.getCfu() == 0);
 	}
 
 	/**
-	 * setFinita() imposta lo stato della partita come partita finita
+	 * Imposta la partita come finita
+	 *
 	 */
 	public void setFinita() {
 		this.finita = true;
 	}
-	
-	public Labirinto getLabirinto(){
-		return this.facolta;
-	}	
-	
-	public Giocatore getGiocatore(){
-		return this.studente;
-	}
-	public int getCfu() {
-		return this.studente.getCfu();
-	}
-	
-	public void setCfu(int cfu) {
-		this.studente.setCfu(cfu);
+
+	public Labirinto getLabirinto() {
+		return this.labirinto;
 	}
 }
