@@ -67,7 +67,7 @@ public class Borsa {
 	 
 	 public boolean removeAttrezzo(String attrezzo) {
 			boolean rimosso = false;
-			for (int i = 0; i < this.numeroAttrezzi;i++){
+			for (int i = 0; i < this.numeroAttrezzi && attrezzi[i]!= null;i++){
 				if(rimosso){
 					this.attrezzi[i--] = this.attrezzi[i];}
 				if(this.attrezzi[i].getNome().equals(attrezzo) && !rimosso){
