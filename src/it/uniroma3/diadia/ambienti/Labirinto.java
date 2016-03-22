@@ -4,7 +4,7 @@ import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 /**
  * Questa classe inizializza il labirinto del gioco
- * @author Simone
+ * @author Andrea Menichelli & Alessio Piccione
  * @see Stanza
  * @version 0.1
  *

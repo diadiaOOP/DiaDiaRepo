@@ -14,14 +14,14 @@ import it.uniroma3.diadia.ambienti.Stanza;
  */
 
 public class Partita {
-	private Labirinto labirinto;
+	private Labirinto facolta;
 	private Stanza stanzaCorrente;
 	private boolean finita;
 	private Giocatore giocatore;
 
 	public Partita(){
-		this.labirinto = new Labirinto();
-		this.stanzaCorrente = this.labirinto.getStanzaIniziale();
+		this.facolta = new Labirinto();
+		this.stanzaCorrente = this.facolta.getStanzaIniziale();
 		this.finita = false;
 		this.giocatore = new Giocatore();
 	}
@@ -35,7 +35,7 @@ public class Partita {
 	}
 
 	public Giocatore getGiocatore() {
-		return giocatore;
+		return this.giocatore;
 	}
 
 	public void setGiocatore(Giocatore giocatore) {
@@ -47,7 +47,7 @@ public class Partita {
 	 * @return vero se partita vinta
 	 */
 	public boolean vinta() {
-		return this.getStanzaCorrente()==this.labirinto.getStanzaVincente();
+		return this.getStanzaCorrente()==this.facolta.getStanzaVincente();
 	}
 
 	/**
@@ -67,6 +67,6 @@ public class Partita {
 	}
 
 	public Labirinto getLabirinto() {
-		return this.labirinto;
+		return this.facolta;
 	}
 }
