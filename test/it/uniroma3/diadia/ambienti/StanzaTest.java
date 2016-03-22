@@ -9,74 +9,52 @@ import org.junit.Test;
 
 public class StanzaTest {
 
-	private Stanza Bar, Mensa, Biblioteca;
-	private Attrezzo tazzina, vassoio, piatto, dizionario;
+	private Stanza bar, mensa, vuota;
+	private Attrezzo tazzina, vassoio, piatto;
 	
-	/*@Before
+	@Before
 	public void setUp() {
-		Bar = new Stanza("bar");
-		Mensa = new Stanza("mensa");
-		Biblioteca = new Stanza("biblioteca");
+		bar = new Stanza("bar");
+		mensa = new Stanza("mensa");
+		vuota = new Stanza("vuota");
 		tazzina = new Attrezzo("tazzina", 1);
 		vassoio = new Attrezzo("vassoio", 3);
 		piatto = new Attrezzo("piatto", 1);
-		dizionario = new Attrezzo("dizionario", 5);
-		Bar.impostaStanzaAdiacente("nord",Mensa);
-		Mensa.impostaStanzaAdiacente("sud", Bar);
-		Bar.addAttrezzo(tazzina);
-		Mensa.addAttrezzo(vassoio);
-		Mensa.addAttrezzo(piatto);
-		Biblioteca.addAttrezzo(dizionario);
+		bar.impostaStanzaAdiacente("nord", mensa);
+		mensa.impostaStanzaAdiacente("sud", bar);
+		bar.addAttrezzo(tazzina);
+		mensa.addAttrezzo(vassoio);
+		mensa.addAttrezzo(piatto);
 	}
 
 	@Test	
 	public void testGetStanzaAdiacenteBarNord() {
-		assertEquals(Mensa, Bar.getStanzaAdiacente("nord"));
+		assertEquals(mensa, bar.getStanzaAdiacente("nord"));
 	}
 	
 	@Test
 	public void testGetStanzaAdiacenteMensaSud() {
-		assertEquals(Bar, Mensa.getStanzaAdiacente("sud"));
+		assertEquals(bar, mensa.getStanzaAdiacente("sud"));
 	}
 	
 	@Test
 	public void testGetStanzaAdiacenteMensaOvest() {
-		assertEquals(null, Mensa.getStanzaAdiacente("ovest"));
+		assertNull(mensa.getStanzaAdiacente("ovest"));
 	}
 	
 	@Test
 	public void testAttrezziToStringBar(){
-		assertEquals("tazzina (1 kg) ", Bar.attrezziToString());
+		assertEquals("tazzina (1 kg) ", bar.attrezziToString());
 	}
 	
 	@Test
 	public void testAttrezziToStringMensa(){
-		assertEquals("vassoio (3 kg) piatto (1 kg) ", Mensa.attrezziToString());
+		assertEquals("vassoio (3 kg) piatto (1 kg) ", mensa.attrezziToString());
 	}
 	
 	@Test
-	public void testAttrezziToStringBiblioteca(){
-		assertEquals("dizionario (5 kg) ", Biblioteca.attrezziToString());
-	}*/
-	
-	
-	/*public void removeSetUp() {
-		Mensa = new Stanza("mensa");
-		vassoio = new Attrezzo("vassoio", 3);
-		piatto = new Attrezzo("piatto", 1);
-		Mensa.addAttrezzo(vassoio);
-		Mensa.addAttrezzo(piatto);
-		//Mensa.removeAttrezzo("piatto");
-	}*/
-	
-	/*@Test
-	public void testRemoveAttrezzo() {
-		assertEquals("vassoio (3 kg) ", Mensa.attrezziToString());
-	}*/
-	
-	/*@Test
-	public void testRemoveAttrezzo_1() {
-		assertFalse(Mensa.removeAttrezzo("piatto"));
-	}*/
+	public void testAttrezziToStringVuota(){
+		assertEquals("", vuota.attrezziToString());
+	}
 
 }

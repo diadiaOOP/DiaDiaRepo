@@ -84,6 +84,15 @@ public class Stanza {
 		return "Ti trovi in " + this.toString();
 	}
 
+	public String attrezziToString(){
+    	String s="";
+    	for (Attrezzo attrezzo : this.attrezzi) {
+    		if(attrezzo!=null)
+    			s += attrezzo.toString()+" ";
+    	}
+    	return s;
+    }
+	
 	/**
 	 * Restituisce la collezione di attrezzi presenti nella stanza.
 	 * @return la collezione di attrezzi nella stanza.
