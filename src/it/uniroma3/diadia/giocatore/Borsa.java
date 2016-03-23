@@ -19,13 +19,16 @@ public class Borsa {
 	}
 
 	public boolean addAttrezzo(Attrezzo attrezzo) {
-		if (this.getPeso() + attrezzo.getPeso() > this.getPesoMax())
-			return false;
-		if (this.numeroAttrezzi==10)
-			return false;
-		this.attrezzi[this.numeroAttrezzi] = attrezzo;
-		this.numeroAttrezzi++;
-		return true;
+		if (attrezzo !=null){
+			if (this.getPeso() + attrezzo.getPeso() > this.getPesoMax())
+				return false;
+			if (this.numeroAttrezzi==10)
+				return false;
+			this.attrezzi[this.numeroAttrezzi] = attrezzo;
+			this.numeroAttrezzi++;
+			return true;
+		}
+		else return false;
 	}
 
 	public int getPesoMax() {
