@@ -68,12 +68,7 @@ public class StanzaTest {
 	public void testAttrezziToString_Vuota(){
 		assertEquals("", this.vuota.attrezziToString());
 	}
-	/*********************************************getNumeroAttrezzi**************************************************************/
 	
-	@Test
-	public void testGetNumeroAttrezzi_Vuota() {
-		assertEquals(0, this.vuota.getNumeroAttrezzi());
-	}
 	/*********************************************getAttrezzi**************************************************************/
 	
 	@Test(expected=NullPointerException.class)
@@ -164,4 +159,15 @@ public class StanzaTest {
 		assertNull(this.bar.getAttrezzo("piatto"));
 	}
 	
+/*********************************************removeAttrezzo**************************************************************/
+	
+	@Test (expected = NullPointerException.class)
+	public void testRemoveAttrezzo_StanzaNull (){
+		assertEquals(this.tazzina, this.isNull.removeAttrezzo(tazzina));
+	}
+	
+	@Test 
+	public void testRemoveAttrezzo_AttrezzoNull(){
+		
+	}
 }
