@@ -15,8 +15,13 @@ public class LabirintoTest {
 	}
 
 	@Test
-	public void test() {
-		
+	public void testGetStanzaIniziale() {
+		assertEquals("Atrio", this.labirinto.getStanzaIniziale().getNome());
+	}
+	
+	@Test
+	public void testGetStanzaVincente() {
+		assertEquals("Biblioteca", this.labirinto.getStanzaVincente().getNome());
 	}
 
 }
