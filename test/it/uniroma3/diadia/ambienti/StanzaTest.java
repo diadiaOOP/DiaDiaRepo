@@ -9,8 +9,8 @@ import org.junit.Test;
 
 public class StanzaTest {
 
-	private Stanza bar, mensa, vuota, isNull;
-	private Attrezzo tazzina, vassoio, piatto;
+	private Stanza bar, mensa, vuota, isNull, piena;
+	private Attrezzo tazzina, vassoio, piatto, attrezzoNull;
 	private Attrezzo[] array, array_1;
 	
 	@Before
@@ -18,7 +18,9 @@ public class StanzaTest {
 		this.bar = new Stanza("bar");
 		this.mensa = new Stanza("mensa");
 		this.vuota = new Stanza("vuota");
+		this.piena = new Stanza("piena");  
 		this.isNull = null;
+		this.attrezzoNull = null;
 		this.tazzina = new Attrezzo("tazzina", 1);
 		this.vassoio = new Attrezzo("vassoio", 3);
 		this.piatto = new Attrezzo("piatto", 1);
@@ -85,13 +87,30 @@ public class StanzaTest {
 	public void testGetAttrezzi_Bar() {
 		assertArrayEquals(this.array_1, this.bar.getAttrezzi());
 	}
-/*********************************************addAttrezzo**************************************************************/
-	
+
+	/*********************************************addAttrezzo**************************************************************/
 	@Test (expected= NullPointerException.class)
+
 	public void testAddAttrezzo_StanzaIsNull (){
 		assertNull(this.isNull.addAttrezzo(piatto));
 
 	}
+	
+	@Test /*(expected= NullPointerException.class)*/
+	public void testAddAttrezzo_AttrezzoNull (){
+		assertFalse(this.bar.addAttrezzo(attrezzoNull));
+	}
+	
+	@Test
+	public void testAddAttrezzo_AttrezzoNotNull (){
+		assertTrue(this.bar.addAttrezzo(tazzina));
+	}
+	
+	@Test /*(expected=IndexOutOfBoundsException.class)*/
+	public void testAddAttrezzo_StanzaPiena(){
+		assertFalse(this.piena.addAttrezzo(piatto));
+	}
+
 
 /*********************************************hasAttrezzo**************************************************************/
 
