@@ -31,6 +31,7 @@ public class StanzaTest {
 		this.array_1 = new Attrezzo[10];
 		this.array_1[0] = tazzina;
 	}
+	/*********************************************GetStanzaAdiacente**************************************************************/
 
 	@Test	
 	public void testGetStanzaAdiacente_Bar_Nord() {
@@ -46,6 +47,7 @@ public class StanzaTest {
 	public void testGetStanzaAdiacente_Mensa_Ovest() {
 		assertNull(this.mensa.getStanzaAdiacente("ovest"));
 	}
+	/*********************************************attrezziToString**************************************************************/
 	
 	@Test
 	public void testAttrezziToString_Bar(){
@@ -61,11 +63,13 @@ public class StanzaTest {
 	public void testAttrezziToString_Vuota(){
 		assertEquals("", this.vuota.attrezziToString());
 	}
+	/*********************************************GetNumeroAttrezzi**************************************************************/
 	
 	@Test
 	public void testGetNumeroAttrezzi_Vuota() {
 		assertEquals(0, this.vuota.getNumeroAttrezzi());
 	}
+	/*********************************************getAttrezzi**************************************************************/
 	
 	@Test(expected=NullPointerException.class)
 	public void testGetAttrezzi_Null() {
@@ -80,6 +84,13 @@ public class StanzaTest {
 	@Test
 	public void testGetAttrezzi_Bar() {
 		assertArrayEquals(this.array_1, this.bar.getAttrezzi());
+	}
+/*********************************************addAttrezzo**************************************************************/
+	@Test (expected= NullPointerException.class)
+
+	public void testAddAttrezzo_StanzaIsNull (){
+		assertNull(this.isNull.addAttrezzo(piatto));
+
 	}
 
 }
