@@ -29,6 +29,7 @@ public class StanzaTest {
 		this.bar.addAttrezzo(tazzina);
 		this.mensa.addAttrezzo(vassoio);
 		this.mensa.addAttrezzo(piatto);
+		this.piena.setNumeroAttrezzi(10);
 		this.array = new Attrezzo[10];
 		this.array_1 = new Attrezzo[10];
 		this.array_1[0] = tazzina;
@@ -106,7 +107,7 @@ public class StanzaTest {
 		assertTrue(this.bar.addAttrezzo(tazzina));
 	}
 	
-	@Test /*(expected=IndexOutOfBoundsException.class)*/
+	@Test //(expected=IndexOutOfBoundsException.class)
 	public void testAddAttrezzo_StanzaPiena(){
 		assertFalse(this.piena.addAttrezzo(piatto));
 	}
