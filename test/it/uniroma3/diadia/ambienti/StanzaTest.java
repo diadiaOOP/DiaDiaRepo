@@ -166,8 +166,13 @@ public class StanzaTest {
 		assertEquals(this.tazzina, this.isNull.removeAttrezzo(tazzina));
 	}
 	
-	@Test 
+	@Test (expected=NullPointerException.class)
 	public void testRemoveAttrezzo_AttrezzoNull(){
-		
+		assertFalse(this.bar.removeAttrezzo(attrezzoNull));
+	}
+	
+	@Test
+	public void testRemoveAttrezzo_StanzaVuota(){
+		assertFalse(this.vuota.removeAttrezzo(vassoio));
 	}
 }
