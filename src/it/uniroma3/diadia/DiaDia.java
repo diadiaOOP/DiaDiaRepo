@@ -122,7 +122,7 @@ public class DiaDia {
 		else {
 			stanzaCorrente.removeAttrezzo(daPrendere);
 			this.partita.getGiocatore().getBorsa().addAttrezzo(daPrendere);
-			System.out.println("Attrezzo preso!");
+			System.out.println("Attrezzo preso.");
 			System.out.println(partita.getStanzaCorrente().getDescrizione());
 		}
 	}
@@ -139,7 +139,7 @@ public class DiaDia {
 		else {
 			Attrezzo daPosare =  borsaDelGiocatore.removeAttrezzo(nomeAttrezzo);
 			this.partita.getStanzaCorrente().addAttrezzo(daPosare);
-			System.out.println("Attrezzo posato!");
+			System.out.println("Attrezzo posato.");
 			System.out.println(partita.getStanzaCorrente().getDescrizione());
 		}
 	}

@@ -93,6 +93,10 @@ public class Stanza {
     	return s;
     }
 	
+	public int getNumeroAttrezzi() {
+		return this.numeroAttrezzi;
+	}
+	
 	/**
 	 * Restituisce la collezione di attrezzi presenti nella stanza.
 	 * @return la collezione di attrezzi nella stanza.
