@@ -9,6 +9,7 @@ import org.junit.Test;
 
 public class StanzaTest {
 
+	private static final String NOME_TAZZINA = "tazzina";
 	private Stanza bar, mensa, vuota, isNull, piena, stanzaAttrezzoNull;
 	private Attrezzo tazzina, vassoio, piatto, attrezzoNull;
 	private Attrezzo[] array, array_1;
@@ -22,7 +23,7 @@ public class StanzaTest {
 		this.stanzaAttrezzoNull = new Stanza("stanzaAttrezzoNull");
 		this.isNull = null;
 		this.attrezzoNull = null;
-		this.tazzina = new Attrezzo("tazzina", 1);
+		this.tazzina = new Attrezzo(NOME_TAZZINA, 1);
 		this.vassoio = new Attrezzo("vassoio", 3);
 		this.piatto = new Attrezzo("piatto", 1);
 		this.bar.impostaStanzaAdiacente("nord", mensa);
@@ -90,23 +91,23 @@ public class StanzaTest {
 	@Test (expected= NullPointerException.class)
 
 	public void testAddAttrezzo_StanzaIsNull (){
-		assertNull(this.isNull.addAttrezzo(piatto));
+		assertNull(this.isNull.addAttrezzo(this.piatto));
 
 	}
 	
 	@Test /*(expected= NullPointerException.class)*/
 	public void testAddAttrezzo_AttrezzoNull (){
-		assertFalse(this.bar.addAttrezzo(attrezzoNull));
+		assertFalse(this.bar.addAttrezzo(this.attrezzoNull));
 	}
 	
 	@Test
 	public void testAddAttrezzo_AttrezzoNotNull (){
-		assertTrue(this.bar.addAttrezzo(tazzina));
+		assertTrue(this.bar.addAttrezzo(this.tazzina));
 	}
 	
 	@Test
 	public void testAddAttrezzo_StanzaPiena(){
-		assertFalse(this.piena.addAttrezzo(piatto));
+		assertFalse(this.piena.addAttrezzo(this.piatto));
 	}
 
 
@@ -124,7 +125,7 @@ public class StanzaTest {
 	
 	@Test
 	public void testHasAttrezzo_Bar_Tazzina() {
-		assertTrue(this.bar.hasAttrezzo("tazzina"));
+		assertTrue(this.bar.hasAttrezzo(NOME_TAZZINA));
 	}
 	
 	@Test
@@ -151,7 +152,7 @@ public class StanzaTest {
 	
 	@Test
 	public void testGetAttrezzo_Tazzina_Bar() {
-		assertEquals(this.tazzina, this.bar.getAttrezzo("tazzina"));
+		assertEquals(this.tazzina, this.bar.getAttrezzo(NOME_TAZZINA));
 	}
 	
 	@Test
@@ -163,16 +164,30 @@ public class StanzaTest {
 	
 	@Test (expected = NullPointerException.class)
 	public void testRemoveAttrezzo_StanzaNull (){
-		assertEquals(this.tazzina, this.isNull.removeAttrezzo(tazzina));
+		assertEquals(this.tazzina, this.isNull.removeAttrezzo(this.tazzina));
 	}
 	
 	@Test (expected=NullPointerException.class)
 	public void testRemoveAttrezzo_AttrezzoNull(){
-		assertFalse(this.bar.removeAttrezzo(attrezzoNull));
+		assertFalse(this.bar.removeAttrezzo(this.attrezzoNull));
 	}
 	
 	@Test
 	public void testRemoveAttrezzo_StanzaVuota(){
-		assertFalse(this.vuota.removeAttrezzo(vassoio));
+		assertFalse(this.vuota.removeAttrezzo(this.vassoio));
+	}
+	
+	@Test
+	public void testRemoveAttrezzo_AttrezzoEsistente (){
+		assertTrue(this.bar.removeAttrezzo(this.tazzina));
+	}
+	
+	@Test
+	public void testRemoveAttrezzo_AttrezzoEsistente_Clone (){
+		Attrezzo tazzinaDuplicata = new Attrezzo (NOME_TAZZINA,1);
+		assertFalse(tazzinaDuplicata==this.tazzina);
+		assertEquals(this.tazzina.getNome(), tazzinaDuplicata.getNome());
+		assertTrue(this.bar.removeAttrezzo(tazzinaDuplicata));
+		
 	}
 }
