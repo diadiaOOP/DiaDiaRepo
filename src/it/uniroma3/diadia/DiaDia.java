@@ -2,6 +2,7 @@ package it.uniroma3.diadia;
 
 import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
+import it.uniroma3.diadia.comandi.ComandoVai;
 import it.uniroma3.diadia.giocatore.Borsa;
 
 import java.util.Scanner;
@@ -58,7 +59,7 @@ public class DiaDia {
 			this.fine(); 
 			return true;
 		} else if (comandoDaEseguire.getNome().equals("vai"))
-			this.vai(comandoDaEseguire.getParametro());
+			new ComandoVai(comandoDaEseguire.getParametro()).esegui(partita);
 		else if (comandoDaEseguire.getNome().equals("aiuto"))
 			this.aiuto();
 		else if (comandoDaEseguire.getNome().equals("prendi"))
@@ -90,7 +91,7 @@ public class DiaDia {
 	 * e ne stampa il nome, altrimenti stampa un messaggio di errore
 	 */
 	
-	private void vai(String direzione) {
+/*	private void vai(String direzione) {
 		Stanza prossimaStanza = null;
 		prossimaStanza = this.partita.getStanzaCorrente().getStanzaAdiacente(direzione);
 		if(direzione==null)
@@ -104,7 +105,7 @@ public class DiaDia {
 		}
 		System.out.println(partita.getStanzaCorrente().getDescrizione());
 	}
-
+*/
 	/**
 	 * Comando "prendi"
 	 */
@@ -112,11 +113,11 @@ public class DiaDia {
 		Stanza stanzaCorrente = this.partita.getStanzaCorrente();
 		Attrezzo daPrendere = stanzaCorrente.getAttrezzo(nomeAttrezzo);
 		if (!stanzaCorrente.hasAttrezzo(nomeAttrezzo)) {
-			System.out.println("L'attrezzo cercato non è presente in questa stanza!");
+			System.out.println("L'attrezzo cercato non ï¿½ presente in questa stanza!");
 			System.out.println("Ti trovi in "+this.partita.getStanzaCorrente().getNome());
 		}
 		else if (!this.partita.getGiocatore().getBorsa().addAttrezzo(daPrendere)) {
-			System.out.println("Non c'è abbastanza spazio nella borsa per questo attrezzo!");
+			System.out.println("Non c'ï¿½ abbastanza spazio nella borsa per questo attrezzo!");
 			System.out.println("Ti trovi in "+this.partita.getStanzaCorrente().getNome());
 		}
 		else {
@@ -150,6 +151,8 @@ public class DiaDia {
 	private void fine() {
 		System.out.println("Grazie di aver giocato!");  // si desidera smettere
 	}
+	
+	
 
 	public static void main(String[] argc) {
 		DiaDia gioco = new DiaDia();

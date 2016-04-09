@@ -69,4 +69,7 @@ public class Partita {
 	public Labirinto getLabirinto() {
 		return this.facolta;
 	}
+	public  Partita getPartita (){
+		return this;
+	}
 }
