@@ -18,7 +18,6 @@ public class FabbricaDiComandiSemplice implements FabbricaDiComandi {
 			parametro=scannerDiParole.next();
 		if (nomeComando==null){
 			comando = new ComandoNonValido();
-			comando.setParametro(parametro);
 		}
 		else if (nomeComando.equals("vai"))
 			comando = new ComandoVai();
