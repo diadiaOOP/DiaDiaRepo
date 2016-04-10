@@ -7,12 +7,8 @@ public class ComandoVai implements Comando {
 
 	public String direzione;
 
-	/*public ComandoVai(String direzione){
-		this.direzione=direzione;
-	}*/
 
 	public void esegui(Partita partita) {
-		Stanza corrente = partita.getStanzaCorrente();
 		Stanza prossimaStanza = null;
 		if(direzione==null)
 			System.out.println("Dove vuoi andare?");
@@ -23,10 +19,9 @@ public class ComandoVai implements Comando {
 		}
 
 		partita.setStanzaCorrente(prossimaStanza);
-		int cfu = partita.getGiocatore().getCfu();
-		partita.getGiocatore().setCfu(cfu--);
+		partita.getGiocatore().consumeCfu();
 
-		System.out.println(partita.getStanzaCorrente().getDescrizione());
+		System.out.println(partita.getStanzaCorrente().getNome());
 	}
 
 

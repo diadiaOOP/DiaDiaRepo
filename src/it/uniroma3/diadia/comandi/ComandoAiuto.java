@@ -7,7 +7,7 @@ public class ComandoAiuto implements Comando {
 	@Override
 	public void esegui(Partita partita) {
 		// TODO Auto-generated method stub
-		String[] elencoComandi = {"vai", "prendi", "posa", "aiuto", "fine"};
+		String[] elencoComandi = {"vai", "prendi", "posa", "guarda", "aiuto", "fine"};
 		for(int i=0; i< elencoComandi.length; i++) 
 			System.out.print(elencoComandi[i]+" ");
 		System.out.println();

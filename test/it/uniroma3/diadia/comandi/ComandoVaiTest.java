@@ -21,6 +21,7 @@ public class ComandoVaiTest {
 	 */
 	
 	Stanza stanza = new Stanza("pippo");
+	
 	@Before
 	public void setUp() throws Exception {
 		

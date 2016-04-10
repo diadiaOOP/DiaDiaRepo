@@ -13,6 +13,10 @@ public class Giocatore {
 	public void setCfu(int cfu){
 		this.cfu = cfu;
 	}
+	
+	public void consumeCfu() {
+		this.cfu--;
+	}
 
 	public int getCfu(){
 		return this.cfu;
