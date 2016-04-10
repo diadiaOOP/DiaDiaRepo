@@ -16,10 +16,11 @@ public class ComandoNonValido implements Comando {
 
 	}
 
-	@Override
+	/*@Override
 	public String getParametro() {
 		// TODO Auto-generated method stub
 		return null;
-	}
+	}*/
+
 
 }

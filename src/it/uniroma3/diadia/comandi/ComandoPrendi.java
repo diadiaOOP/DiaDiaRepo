@@ -6,19 +6,21 @@ import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 public class ComandoPrendi implements Comando {
 
-	private String nomeAttrezzo;
+	public String nomeAttrezzo;
+	
 
-	public void esegui(Partita partita, Attrezzo parametro) {
+	@Override
+	public void esegui(Partita partita) {
 		// TODO Auto-generated method stub
 
 		Stanza stanzaCorrente = partita.getStanzaCorrente();
 		Attrezzo daPrendere = stanzaCorrente.getAttrezzo(nomeAttrezzo);
 		if (!stanzaCorrente.hasAttrezzo(nomeAttrezzo)) {
-			System.out.println("L'attrezzo cercato non ï¿½ presente in questa stanza!");
+			System.out.println("L'attrezzo cercato non è presente in questa stanza!");
 			System.out.println("Ti trovi in "+partita.getStanzaCorrente().getNome());
 		}
 		else if (!partita.getGiocatore().getBorsa().addAttrezzo(daPrendere)) {
-			System.out.println("Non c'ï¿½ abbastanza spazio nella borsa per questo attrezzo!");
+			System.out.println("Non c'è abbastanza spazio nella borsa per questo attrezzo!");
 			System.out.println("Ti trovi in "+partita.getStanzaCorrente().getNome());
 		}
 		else {
@@ -33,19 +35,14 @@ public class ComandoPrendi implements Comando {
 	@Override
 	public void setParametro(String parametro) {
 		// TODO Auto-generated method stub
+		this.nomeAttrezzo = parametro;
 
 	}
 
-	@Override
+	/*@Override
 	public String getParametro() {
 		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void esegui(Partita partita) {
-		// TODO Auto-generated method stub
-
-	}
+		return this.nomeAttrezzo;
+	}*/
 
 }

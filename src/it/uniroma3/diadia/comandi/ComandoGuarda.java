@@ -16,10 +16,11 @@ public class ComandoGuarda implements Comando {
 
 	}
 
-	@Override
+	/*@Override
 	public String getParametro() {
 		// TODO Auto-generated method stub
 		return null;
-	}
+	}*/
+
 
 }

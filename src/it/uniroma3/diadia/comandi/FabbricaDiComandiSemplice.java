@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class FabbricaDiComandiSemplice implements FabbricaDiComandi {
 
 	@Override
-	public Comando CostruisciComando(String istruzione) {
+	public Comando costruisciComando(String istruzione) {
 		// TODO Auto-generated method stub
 		Scanner scannerDiParole = new Scanner (istruzione);
 		String nomeComando = null;
@@ -21,7 +21,7 @@ public class FabbricaDiComandiSemplice implements FabbricaDiComandi {
 			comando.setParametro(parametro);
 		}
 		else if (nomeComando.equals("vai"))
-			comando = new ComandoVai(comando.getParametro());
+			comando = new ComandoVai();
 		else if (nomeComando.equals("prendi"))
 			comando = new ComandoPrendi();
 		else if (nomeComando.equals("posa"))
@@ -36,7 +36,6 @@ public class FabbricaDiComandiSemplice implements FabbricaDiComandi {
 		comando.setParametro(parametro);
 
 		return comando;
-
 
 	}
 

@@ -7,15 +7,15 @@ public class ComandoVai implements Comando {
 
 	public String direzione;
 
-	public ComandoVai(String direzione){
+	/*public ComandoVai(String direzione){
 		this.direzione=direzione;
-	}
+	}*/
 
 	public void esegui(Partita partita) {
 		Stanza corrente = partita.getStanzaCorrente();
 		Stanza prossimaStanza = null;
 		if(direzione==null)
-			System.out.println("Dove vuoi andare ?");
+			System.out.println("Dove vuoi andare?");
 		prossimaStanza = partita.getStanzaCorrente().getStanzaAdiacente(direzione);
 		if (prossimaStanza == null){
 			System.out.println("Direzione inesistente");
@@ -37,9 +37,8 @@ public class ComandoVai implements Comando {
 		this.direzione=parametro;
 	}
 
-	@Override
-	public String getParametro() {
+	/*public String getParametro() {
 		// TODO Auto-generated method stub
 		return this.direzione;
-	}
+	}*/
 }
