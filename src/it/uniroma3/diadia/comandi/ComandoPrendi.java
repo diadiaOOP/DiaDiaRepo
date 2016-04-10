@@ -16,11 +16,11 @@ public class ComandoPrendi implements Comando {
 		Stanza stanzaCorrente = partita.getStanzaCorrente();
 		Attrezzo daPrendere = stanzaCorrente.getAttrezzo(nomeAttrezzo);
 		if (!stanzaCorrente.hasAttrezzo(nomeAttrezzo)) {
-			System.out.println("L'attrezzo cercato non è presente in questa stanza!");
+			System.out.println("L'attrezzo cercato non ï¿½ presente in questa stanza!");
 			System.out.println("Ti trovi in "+partita.getStanzaCorrente().getNome());
 		}
 		else if (!partita.getGiocatore().getBorsa().addAttrezzo(daPrendere)) {
-			System.out.println("Non c'è abbastanza spazio nella borsa per questo attrezzo!");
+			System.out.println("Non c'ï¿½ abbastanza spazio nella borsa per questo attrezzo!");
 			System.out.println("Ti trovi in "+partita.getStanzaCorrente().getNome());
 		}
 		else {
@@ -39,10 +39,17 @@ public class ComandoPrendi implements Comando {
 
 	}
 
-	/*@Override
+	@Override
 	public String getParametro() {
 		// TODO Auto-generated method stub
 		return this.nomeAttrezzo;
-	}*/
+	}
+
+
+	@Override
+	public String getNome() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

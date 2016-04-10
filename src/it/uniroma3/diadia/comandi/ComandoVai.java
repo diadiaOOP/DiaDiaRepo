@@ -37,8 +37,21 @@ public class ComandoVai implements Comando {
 		this.direzione=parametro;
 	}
 
-	/*public String getParametro() {
+
+
+	@Override
+	public String getParametro() {
 		// TODO Auto-generated method stub
 		return this.direzione;
-	}*/
+	}
+
+
+
+	@Override
+	public String getNome() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
 }
