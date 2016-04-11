@@ -17,7 +17,7 @@ public class Stanza {
 	private static final int NUMERO_MASSIMO_ATTREZZI = 10;
 	private String nome;
 	private Attrezzo[] attrezzi;
-	private int numeroAttrezzi;
+	protected int numeroAttrezzi;
 	private Stanza[] stanzeAdiacenti;
 	private int numeroStanzeAdiacenti;
 	private String[] direzioni;
@@ -32,7 +32,7 @@ public class Stanza {
 		this.numeroAttrezzi = 0;
 		this.direzioni = new String[NUMERO_MASSIMO_DIREZIONI];
 		this.stanzeAdiacenti = new Stanza[NUMERO_MASSIMO_DIREZIONI];
-		this.attrezzi = new Attrezzo[NUMERO_MASSIMO_ATTREZZI];
+		this.attrezzi = new Attrezzo[getNumeroMassimoAttrezzi()];
 	}
 
 	/**
@@ -112,7 +112,7 @@ public class Stanza {
 	 */
 	public boolean addAttrezzo(Attrezzo attrezzo) {
 		if (attrezzo!=null){
-			if (this.numeroAttrezzi < NUMERO_MASSIMO_ATTREZZI) {
+			if (this.numeroAttrezzi < getNumeroMassimoAttrezzi()) {
 				this.attrezzi[numeroAttrezzi] = attrezzo;
 				this.numeroAttrezzi++;
 				return true;
@@ -215,6 +215,10 @@ public class Stanza {
 	
 	public void setNumeroAttrezzi(int nuovoNum){
 		 this.numeroAttrezzi=nuovoNum;
+	}
+
+	public static int getNumeroMassimoAttrezzi() {
+		return NUMERO_MASSIMO_ATTREZZI;
 	}
 
 }
