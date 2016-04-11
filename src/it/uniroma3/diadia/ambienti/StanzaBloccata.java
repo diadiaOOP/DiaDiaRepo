@@ -24,7 +24,7 @@ public class StanzaBloccata extends Stanza {
 	@Override
 	public Stanza getStanzaAdiacente (String direzione){
 		if (direzione.equals(this.direzioneBloccata) && !this.hasAttrezzo(chiave)){
-			System.out.println("questa non è la direzione che stai cercando");
+			System.out.println("questa non � la direzione che stai cercando");
 			return this;
 		}
 		else
@@ -33,6 +33,6 @@ public class StanzaBloccata extends Stanza {
 	
 	@Override
 	public String getDescrizione (){
-		return super.toString()+"\nNon puoi andare a "+this.direzioneBloccata+" perché la diritta via è smarrita.\nPotrebbe esserti utile: \t"+chiave;
+		return super.toString()+"\nNon puoi andare a "+this.direzioneBloccata+" perché la diritta via � smarrita.\nPotrebbe esserti utile: \t"+chiave;
 	}
 }

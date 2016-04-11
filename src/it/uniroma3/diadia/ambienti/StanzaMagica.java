@@ -36,7 +36,7 @@ public class StanzaMagica extends Stanza {
 		nomeInvertito = new StringBuilder(attrezzo.getNome());
 		nomeInvertito = nomeInvertito.reverse();
 		attrezzo = new Attrezzo(nomeInvertito.toString(), pesoX2);
-		System.out.println("buahahahahahahah");
+		System.out.println("Abracadabra Alakazam!!!");
 		return attrezzo;
 	}
 
@@ -49,7 +49,6 @@ public class StanzaMagica extends Stanza {
 	public void verificaMagia (Attrezzo attrezzo){
 		if (this.contatoreAttrezziPosati>SOGLIA_MAGICA_DEFAULT){
 			modificaAttrezzo(attrezzo);
-			System.out.println("prova a prendere l'oggetto ahahahaha muori :)))");
 		}
 	}
 
