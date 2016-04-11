@@ -198,7 +198,7 @@ public class StanzaProtected {
 		 this.numeroAttrezzi=nuovoNum;
 	}
 
-	public static int getNumeroMassimoAttrezzi() {
+	public int getNumeroMassimoAttrezzi() {
 		return NUMERO_MASSIMO_ATTREZZI;
 	}
 	
