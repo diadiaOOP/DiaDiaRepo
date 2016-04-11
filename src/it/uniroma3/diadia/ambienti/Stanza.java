@@ -160,6 +160,10 @@ public class Stanza {
 		}
 		return trovato;
 	}
+	
+	public boolean isEmpty() {
+		return (numeroAttrezzi == 0);
+	}
 
 	/**
 	 * Restituisce l'attrezzo nomeAttrezzo se presente nella stanza.

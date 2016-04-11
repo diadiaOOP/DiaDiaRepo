@@ -40,7 +40,7 @@ public class DiaDia {
 		Scanner scannerDiLinee;
 
 		System.out.println(MESSAGGIO_BENVENUTO);
-		System.out.println(partita.getStanzaCorrente().getDescrizione());
+		System.out.println("Sei in: "+partita.getStanzaCorrente().getNome());
 		scannerDiLinee = new Scanner(System.in);		
 		do		
 			istruzione = scannerDiLinee.nextLine();
