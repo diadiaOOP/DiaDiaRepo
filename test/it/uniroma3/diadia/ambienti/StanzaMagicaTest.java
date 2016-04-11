@@ -33,6 +33,7 @@ public class StanzaMagicaTest {
 		assertEquals(caviaInvertita.getNome(), magicaTest.getAttrezzo("esuom").getNome());
 		assertEquals(caviaInvertita.getPeso(), caviaTest.getPeso()*2);
 		
+		
 	}
 
 }
