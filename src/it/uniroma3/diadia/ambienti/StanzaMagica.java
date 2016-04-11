@@ -25,7 +25,9 @@ public class StanzaMagica extends Stanza {
 		if (attrezzo!=null){
 			if (super.getNumeroAttrezzi() < getNumeroMassimoAttrezzi()) {
 				this.getAttrezzi()[getNumeroAttrezzi()] = attrezzo;
-				this.numeroAttrezzi++;
+				int numeroAttrezzi = super.getNumeroAttrezzi();
+				numeroAttrezzi++;
+				super.setNumeroAttrezzi(numeroAttrezzi);
 				contaAttrezzi(attrezzo);
 				return true;
 			}
@@ -59,4 +61,5 @@ public class StanzaMagica extends Stanza {
 			System.out.println("prova a prendere l'oggetto ahahahaha muori :)))");
 		}
 	}
+	
 }
