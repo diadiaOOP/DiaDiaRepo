@@ -17,7 +17,7 @@ import it.uniroma3.diadia.attrezzi.Attrezzo;
 public class StanzaBloccataTest {
 
 	private StanzaBloccata stanzaBloccata;
-	private Stanza stanzaNord, stanzaSud;
+	private Stanza stanzaNord/*, stanzaSud*/;
 	private Attrezzo chiave, inutile;
 
 	/**
@@ -28,7 +28,7 @@ public class StanzaBloccataTest {
 		chiave = new Attrezzo("chiave", 1);
 		stanzaBloccata = new StanzaBloccata("stanza bloccata", "nord", "chiave");
 		stanzaBloccata.impostaStanzaAdiacente("nord", stanzaNord);
-		stanzaBloccata.impostaStanzaAdiacente("sud", stanzaSud);
+		//stanzaBloccata.impostaStanzaAdiacente("sud", stanzaSud);
 	}
 
 	/**
@@ -44,10 +44,10 @@ public class StanzaBloccataTest {
 		assertEquals(stanzaNord, stanzaBloccata.getStanzaAdiacente("nord"));
 	}
 
-	@Test
+	/*@Test
 	public void testGetStanzaAdiacente_NonBloccata() {
 		assertEquals(stanzaSud, stanzaBloccata.getStanzaAdiacente("sud"));
-	}
+	}*/
 
 	@Test
 	public void testGetStanzaAdiacente_conInutile() {
