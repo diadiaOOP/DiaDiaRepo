@@ -48,6 +48,14 @@ public class Borsa {
 			peso += this.attrezzi[i].getPeso();
 		return peso;
 	}
+	
+	public void setNumeroAttrezzi (int num){
+		this.numeroAttrezzi=num;
+	}
+	
+	public int getNumeroAttrezzi (){
+		return this.numeroAttrezzi;
+	}
 
 	public boolean isEmpty() {
 		return this.numeroAttrezzi == 0;
