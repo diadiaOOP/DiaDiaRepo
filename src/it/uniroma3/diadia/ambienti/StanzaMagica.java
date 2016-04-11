@@ -22,22 +22,12 @@ public class StanzaMagica extends Stanza {
 
 	@Override
 	public boolean addAttrezzo(Attrezzo attrezzo) {
-		if (attrezzo!=null){
-			if (super.getNumeroAttrezzi() < getNumeroMassimoAttrezzi()) {
-				this.getAttrezzi()[getNumeroAttrezzi()] = attrezzo;
-				int numeroAttrezzi = super.getNumeroAttrezzi();
-				numeroAttrezzi++;
-				super.setNumeroAttrezzi(numeroAttrezzi);
-				contaAttrezzi(attrezzo);
-				return true;
-			}
-			else{
-				return false;
 
-			}
-		}
-		else return false;
+		this.contatoreAttrezziPosati++;
+		if (this.contatoreAttrezziPosati>this.sogliaMagica)
+			attrezzo = modificaAttrezzo(attrezzo);
 
+		return super.addAttrezzo(attrezzo);
 	}
 
 	private Attrezzo modificaAttrezzo(Attrezzo attrezzo) {
@@ -46,20 +36,21 @@ public class StanzaMagica extends Stanza {
 		nomeInvertito = new StringBuilder(attrezzo.getNome());
 		nomeInvertito = nomeInvertito.reverse();
 		attrezzo = new Attrezzo(nomeInvertito.toString(), pesoX2);
+		System.out.println("buahahahahahahah");
 		return attrezzo;
 	}
-	
+
 	public int contaAttrezzi (Attrezzo attrezzo){
 		verificaMagia(attrezzo);
 		return ++contatoreAttrezziPosati;
-		
+
 	}
-	
+
 	public void verificaMagia (Attrezzo attrezzo){
-		if (this.contatoreAttrezziPosati==SOGLIA_MAGICA_DEFAULT){
+		if (this.contatoreAttrezziPosati>SOGLIA_MAGICA_DEFAULT){
 			modificaAttrezzo(attrezzo);
 			System.out.println("prova a prendere l'oggetto ahahahaha muori :)))");
 		}
 	}
-	
+
 }
