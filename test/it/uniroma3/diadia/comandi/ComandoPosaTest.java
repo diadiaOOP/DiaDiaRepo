@@ -5,7 +5,6 @@ package it.uniroma3.diadia.comandi;
 
 import static org.junit.Assert.*;
 import it.uniroma3.diadia.*;
-import it.uniroma3.diadia.comandi.*;
 import it.uniroma3.diadia.giocatore.*;
 import it.uniroma3.diadia.ambienti.*;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
@@ -24,10 +23,6 @@ public class ComandoPosaTest {
 	private Stanza stanzaTest;
 	private Borsa borsaTest;
 	
-	
-	/**
-	 * @throws java.lang.Exception
-	 */
 	@Before
 	public void setUp() throws Exception {
 		

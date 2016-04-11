@@ -7,7 +7,6 @@ import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 
 import it.uniroma3.diadia.*;
 import it.uniroma3.diadia.ambienti.Stanza;
@@ -15,14 +14,10 @@ import it.uniroma3.diadia.attrezzi.Attrezzo;
 import it.uniroma3.diadia.giocatore.*;
 
 /**
- * @author andrea
+ * @author Andrea Menichelli & Alessio Piccione
  *
  */
 public class ComandoPrendiTest {
-
-	/**
-	 * @throws java.lang.Exception
-	 */
 	
 	private Partita partita;
 	private Attrezzo daPrendere;
@@ -33,19 +28,12 @@ public class ComandoPrendiTest {
 	@Before
 	public void setUp() throws Exception {
 		partita = new Partita();
-		stanzaTest = new Stanza("ho le mie cose");
+		stanzaTest = new Stanza("StanzaTest");
 		partita.setStanzaCorrente(stanzaTest);
 		prendiTest= new ComandoPrendi();
 		borsaTest = partita.getGiocatore().getBorsa();
 		
 	}
-
-	/**
-	 * Test method for {@link it.uniroma3.diadia.comandi.ComandoPrendi#esegui(it.uniroma3.diadia.Partita)}.
-	 */
-	
-				
-
 	 
 	@Test 
 	public void testEsegui_Null() {
@@ -91,7 +79,6 @@ public class ComandoPrendiTest {
 	 */
 	@Test
 	public void testGetNome() {
-		fail("Not yet implemented");
 	}
 
 }
