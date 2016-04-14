@@ -65,7 +65,7 @@ public class StanzaMagicaProtected extends StanzaProtected {
 	}
 	
 	public void verificaMagia (Attrezzo attrezzo){
-		if (this.contatoreAttrezziPosati==SOGLIA_MAGICA_DEFAULT){
+		if (this.contatoreAttrezziPosati>=SOGLIA_MAGICA_DEFAULT){
 			modificaAttrezzo(attrezzo);
 			System.out.println("prova a prendere l'oggetto ahahahaha muori :)))");
 		}
