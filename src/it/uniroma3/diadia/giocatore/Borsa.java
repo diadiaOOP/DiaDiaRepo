@@ -93,13 +93,6 @@ public class Borsa {
 		this.pesoAttualeBorsa=p;
 	}
 	public int getPesoAttualeBorsa (){
-		int pesoTot=0;
-		Iterator<Entry<String, Attrezzo>> iteratore = this.attrezzi.entrySet().iterator();
-		while (iteratore.hasNext()){
-			Attrezzo a = (Attrezzo) iteratore.next();
-			pesoTot+=a.getPeso();
-		}
-		return pesoTot;
-
+		return this.pesoAttualeBorsa;
 	}
 }
