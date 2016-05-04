@@ -4,8 +4,6 @@ import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.attrezzi.*;
 import static org.junit.Assert.*;
 
-import java.util.ArrayList;
-
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,8 +12,8 @@ public class StanzaTest {
 	private static final String NOME_TAZZINA = "tazzina";
 	private Stanza bar, mensa, vuota, isNull, piena, stanzaAttrezzoNull;
 	private Attrezzo tazzina, vassoio, piatto, attrezzoNull;
-	//private Attrezzo[] array, array_1;
-	private ArrayList<Attrezzo> array, array_1;
+	private Attrezzo[] array, array_1;
+	
 	@Before
 	public void setUp() {
 		this.bar = new Stanza("bar");
@@ -35,12 +33,9 @@ public class StanzaTest {
 		this.mensa.addAttrezzo(piatto);
 		this.piena.setNumeroAttrezzi(10);
 		this.stanzaAttrezzoNull.addAttrezzo(attrezzoNull);
-		//this.array = new Attrezzo[10];
-		//this.array_1 = new Attrezzo[10];
-		//this.array_1[0] = tazzina;
-		array = new ArrayList();
-		array_1 = new ArrayList();
-		this.array_1.add(tazzina);
+		this.array = new Attrezzo[10];
+		this.array_1 = new Attrezzo[10];
+		this.array_1[0] = tazzina;
 	}
 	/*********************************************getStanzaAdiacente**************************************************************/
 
@@ -84,12 +79,12 @@ public class StanzaTest {
 	
 	@Test
 	public void testGetAttrezzi_Vuota() {
-		assertEquals(this.array, this.vuota.getAttrezzi());
+		assertArrayEquals(this.array, this.vuota.getAttrezzi());
 	}
 	
 	@Test
 	public void testGetAttrezzi_Bar() {
-		assertEquals(this.array_1, this.bar.getAttrezzi());
+		assertArrayEquals(this.array_1, this.bar.getAttrezzi());
 	}
 
 	/*********************************************addAttrezzo**************************************************************/
@@ -110,7 +105,10 @@ public class StanzaTest {
 		assertTrue(this.bar.addAttrezzo(this.tazzina));
 	}
 	
-	
+	@Test
+	public void testAddAttrezzo_StanzaPiena(){
+		assertFalse(this.piena.addAttrezzo(this.piatto));
+	}
 
 
 /*********************************************hasAttrezzo**************************************************************/
