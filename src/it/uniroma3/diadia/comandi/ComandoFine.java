@@ -8,7 +8,7 @@ public class ComandoFine implements Comando {
 	public void esegui(Partita partita) {
 		// TODO Auto-generated method stub
 		System.out.println("Grazie di aver giocato!");  // si desidera smettere
-		System.exit(0);
+		partita.setFinita();
 	}
 
 	@Override

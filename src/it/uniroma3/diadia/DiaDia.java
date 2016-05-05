@@ -54,18 +54,20 @@ public class DiaDia {
 	 * @return true se l'istruzione e' eseguita e il gioco continua, false altrimenti
 	 */
 	private boolean processaIstruzione(String istruzione) {
-		
+
 		Comando comandoDaEseguire;
 		FabbricaDiComandi factory = new FabbricaDiComandiSemplice();
 		comandoDaEseguire = factory.costruisciComando(istruzione);
-		
+
 		comandoDaEseguire.esegui(this.partita);
-		if (this.partita.vinta())
+		if (this.partita.vinta()){
 			System.out.println("Hai vinto!");
+			return true;
+		}
 		if (!this.partita.giocatoreIsVivo())
 			System.out.println("Hai esaurito i CFU...");
 		return this.partita.isFinita();
-		
+
 	}   
 
 	public static void main(String[] argc) {
