@@ -1,6 +1,8 @@
 package it.uniroma3.diadia.giocatore;
 
+import java.awt.List;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
@@ -89,6 +91,14 @@ public class Borsa {
 		return s.toString();
 	}
 
+	List getContenutoOrdinatoPerPeso(){
+		ArrayList<Attrezzo> tmp = new ArrayList<Attrezzo>(attrezzi.values());
+		Collections.sort(tmp);
+		return null;
+		
+		
+	}
+	
 	public void setPesoAttualeBorsa (int p){
 		this.pesoAttualeBorsa=p;
 	}

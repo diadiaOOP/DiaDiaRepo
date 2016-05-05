@@ -110,6 +110,11 @@ public class Stanza {
 		return false;
 	}
 
+
+
+	List getContenutoOrdinatoPerPeso(){
+		return new List();	
+	}
 	/**
 	 * Restituisce una rappresentazione stringa di questa stanza,
 	 * stampadone la descrizione, le uscite e gli eventuali attrezzi contenuti
