@@ -1,12 +1,11 @@
 package it.uniroma3.diadia.ambienti;
 
-import java.awt.List;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedList;
+//import java.util.LinkedList;
 import java.util.Map;
 import java.util.Set;
-import java.util.TreeMap;
+//import java.util.TreeMap;
 
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
@@ -21,7 +20,7 @@ import it.uniroma3.diadia.attrezzi.Attrezzo;
  */
 
 public class Stanza {
-	private static final int NUMERO_MASSIMO_DIREZIONI = 4;
+	//private static final int NUMERO_MASSIMO_DIREZIONI = 4;
 	private String descrizione;
 	private HashMap<String,Attrezzo> attrezzi;
 	private HashMap<String,Stanza> stanzeAdiacenti;
@@ -93,10 +92,8 @@ public class Stanza {
 	 * Restituisce la collezione di attrezzi presenti nella stanza.
 	 * @return la collezione di attrezzi nella stanza.
 	 */
-	public Attrezzo[] getAttrezzi() {
-		Attrezzo[] risultato= new Attrezzo[this.attrezzi.size()];
-		risultato=this.attrezzi.values().toArray(risultato);
-		return risultato;
+	public HashMap<String, Attrezzo> getAttrezzi() {
+		return this.attrezzi;
 	}
 
 	/**
@@ -105,16 +102,11 @@ public class Stanza {
 	 * @return true se riesce ad aggiungere l'attrezzo, false atrimenti.
 	 */
 	public boolean addAttrezzo(Attrezzo attrezzo) {
-		if(!this.attrezzi.containsKey(attrezzo.getNome()))
-			return this.attrezzi.put(attrezzo.getNome(), attrezzo) == null;
-		return false;
+		if(attrezzo != null)
+			this.attrezzi.put(attrezzo.getNome(), attrezzo);
+		return this.isEmpty();
 	}
 
-
-
-	List getContenutoOrdinatoPerPeso(){
-		return new List();	
-	}
 	/**
 	 * Restituisce una rappresentazione stringa di questa stanza,
 	 * stampadone la descrizione, le uscite e gli eventuali attrezzi contenuti
@@ -129,7 +121,7 @@ public class Stanza {
 		s.append("\nAttrezzi nella stanza: ");
 		for (Attrezzo attrezzo : this.attrezzi.values())
 			s.append(attrezzo +" ");
-		s.append("\nPersonaggi nella stanza: ");
+		//s.append("\nPersonaggi nella stanza: ");
 
 		return s.toString();
 	}
@@ -172,11 +164,5 @@ public class Stanza {
 	public Set<String> getDirezioni() {
 		return this.stanzeAdiacenti.keySet();
 	}
-
-	/*public void setNumeroAttrezzi(int nuovoNum){
-		 this.numeroAttrezzi=nuovoNum;
-	}*/
-
-
-
+	
 }

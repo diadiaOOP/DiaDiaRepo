@@ -1,13 +1,20 @@
 package it.uniroma3.diadia.giocatore;
 
-import java.awt.List;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
+import java.util.TreeSet;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map.Entry;
+//import java.util.Iterator;
+//import java.util.Map.Entry;
 
 import it.uniroma3.diadia.attrezzi.Attrezzo;
+import it.uniroma3.diadia.attrezzi.ComparatorePerNome;
+import it.uniroma3.diadia.attrezzi.ComparatorePerPeso;
 
 public class Borsa {
 	public final static int DEFAULT_PESO_MAX_BORSA = 10;
@@ -26,16 +33,14 @@ public class Borsa {
 		this.numeroAttrezzi = attrezzi.size();
 		this.setPesoAttualeBorsa(0);
 	}
-
+	
 	public boolean addAttrezzo(Attrezzo attrezzo) {
-		if (attrezzo !=null &&
-				this.getPesoAttualeBorsa() + attrezzo.getPeso() > this.getPesoMax())
-			return false;
-
-		this.attrezzi.put( attrezzo.getNome(), attrezzo);
-		this.pesoAttualeBorsa+=attrezzo.getPeso();
-		return true; 
-
+		if (attrezzo != null){
+			this.attrezzi.put(attrezzo.getNome(), attrezzo);
+			this.pesoAttualeBorsa+=attrezzo.getPeso();
+			return true; 
+		}
+		return false;
 	}
 
 	public int getPesoMax() {
@@ -61,12 +66,10 @@ public class Borsa {
 	}
 
 	public boolean hasAttrezzo(String nomeAttrezzo) {
-		//return this.getAttrezzo(nomeAttrezzo)!=null;
 		return this.attrezzi.get(nomeAttrezzo)!=null;
 	}
 
 	public Attrezzo removeAttrezzo(String nomeAttrezzo) {
-		//if (this.isEmpty()) return null;
 		this.pesoAttualeBorsa-=attrezzi.get(nomeAttrezzo).getPeso();
 		return attrezzi.remove(nomeAttrezzo);
 	}
@@ -74,7 +77,7 @@ public class Borsa {
 	public String toString() {
 		StringBuilder s = new StringBuilder();
 		if (!this.isEmpty()) {
-			s.append("Contenuto borsa ("+this.getPesoMax()+"kg/"+this.getPesoMax()+"kg): ");
+			s.append("Contenuto borsa ("+this.getPesoAttualeBorsa()+"kg/"+this.getPesoMax()+"kg): ");
 			for ( String key : attrezzi.keySet() )
 				s.append(key.toString()+" ");
 		}
@@ -83,12 +86,33 @@ public class Borsa {
 		return s.toString();
 	}
 
-	List getContenutoOrdinatoPerPeso(){
-		ArrayList<Attrezzo> tmp = new ArrayList<Attrezzo>(attrezzi.values());
-		Collections.sort(tmp);
-		return null;
-
-
+	public List<Attrezzo> getContenutoOrdinatoPerPeso(){
+		ArrayList<Attrezzo> attrezziOrdinati = new ArrayList<Attrezzo>(attrezzi.values());
+		Comparator<Attrezzo> comp = new ComparatorePerPeso();
+		Collections.sort(attrezziOrdinati, comp);
+		return attrezziOrdinati;
+	}
+	
+	public List<Attrezzo> getContenutoOrdinatoPerNome() {
+		List<Attrezzo> attrezziOrdinati = new ArrayList<Attrezzo>(this.attrezzi.values());
+		Comparator<Attrezzo> comp = new ComparatorePerNome();
+		Collections.sort(attrezziOrdinati, comp);
+		return attrezziOrdinati;
+	}
+	
+	public Map<Integer, Set<Attrezzo>> getContenutoRaggruppatoPerPeso() {
+		Map<Integer, Set<Attrezzo>> mappa = new TreeMap<>();
+		Comparator<Attrezzo> comp = new ComparatorePerPeso();
+		for (Attrezzo attrezzo : this.attrezzi.values()) {
+			if (mappa.containsKey(attrezzo.getPeso()))
+				mappa.get(attrezzo.getPeso()).add(attrezzo);
+			else {
+				Set<Attrezzo> nuovoSet = new TreeSet<>(comp);
+				nuovoSet.add(attrezzo);
+				mappa.put(attrezzo.getPeso(), nuovoSet);
+			}
+		}
+		return mappa;
 	}
 
 	public void setPesoAttualeBorsa (int p){

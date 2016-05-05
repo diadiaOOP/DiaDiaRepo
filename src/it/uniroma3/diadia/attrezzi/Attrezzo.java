@@ -54,10 +54,7 @@ public class Attrezzo implements Comparable <Attrezzo> {
 	
 	@Override
 	public int compareTo(Attrezzo o) {
-		
 		return this.getNome().compareTo(o.getNome());
 	}
-
-	
 
 }
