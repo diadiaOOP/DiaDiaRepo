@@ -12,14 +12,15 @@ public class ComandoPosa implements Comando {
 	@Override
 	public void esegui(Partita partita) {
 		Borsa borsaDelGiocatore = partita.getGiocatore().getBorsa();
-		if (!borsaDelGiocatore.hasAttrezzo(nomeAttrezzo)) {
+		if (!(borsaDelGiocatore.hasAttrezzo(this.nomeAttrezzo))) {
 			System.out.println("Non possiedi questo attrezzo!");
 			//System.out.println("Ti trovi in "+partita.getStanzaCorrente().getNome());
 		}
 		else {
-			Attrezzo daPosare =  borsaDelGiocatore.getAttrezzo(nomeAttrezzo);
+			Attrezzo daPosare =  borsaDelGiocatore.getAttrezzo(this.nomeAttrezzo);
 			partita.getStanzaCorrente().addAttrezzo(daPosare);
 			System.out.println("Attrezzo posato.");
+			borsaDelGiocatore.removeAttrezzo(this.nomeAttrezzo);
 			//System.out.println(partita.getStanzaCorrente().getDescrizione());
 		}
 	}

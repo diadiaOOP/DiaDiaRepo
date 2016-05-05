@@ -61,22 +61,14 @@ public class Borsa {
 	}
 
 	public boolean hasAttrezzo(String nomeAttrezzo) {
-		return this.getAttrezzo(nomeAttrezzo)!=null;
+		//return this.getAttrezzo(nomeAttrezzo)!=null;
+		return this.attrezzi.get(nomeAttrezzo)!=null;
 	}
 
 	public Attrezzo removeAttrezzo(String nomeAttrezzo) {
-		if (this.isEmpty()) return null;
-		Attrezzo a = null;
-		Iterator<Entry<String, Attrezzo>> iteratore =this.attrezzi.entrySet().iterator();
-
-		while (iteratore.hasNext()) {
-			a = (Attrezzo) iteratore.next();
-			if (a.getNome().equals(nomeAttrezzo)) {
-				iteratore.remove();
-				return a;
-			}
-		}
-		return a;
+		//if (this.isEmpty()) return null;
+		this.pesoAttualeBorsa-=attrezzi.get(nomeAttrezzo).getPeso();
+		return attrezzi.remove(nomeAttrezzo);
 	}
 
 	public String toString() {
@@ -95,10 +87,10 @@ public class Borsa {
 		ArrayList<Attrezzo> tmp = new ArrayList<Attrezzo>(attrezzi.values());
 		Collections.sort(tmp);
 		return null;
-		
-		
+
+
 	}
-	
+
 	public void setPesoAttualeBorsa (int p){
 		this.pesoAttualeBorsa=p;
 	}
