@@ -20,22 +20,35 @@ public class BorsaTest {
 	 * @throws java.lang.Exception
 	 */
 	
-	Borsa daTestare, isNull, vuota;
-	Attrezzo attrezzoNull, tazzina, balena;
+	Borsa daTestare, borsaVariAttrezzi, borsaNull, borsaVuota;
+	Attrezzo attrezzoNull, tazzina, piuma, libro, ps, piombo, balena;
+	
 	@Before
 	public void setUp() throws Exception {
-		this.vuota=new Borsa(0);
+		
+		this.borsaVuota = new Borsa(0);
 		this.daTestare = new Borsa ();
-		this.isNull = null;
+		this.borsaNull = null;
+		this.borsaVariAttrezzi = new Borsa();
+		
 		this.attrezzoNull=null;
-		this.tazzina = new Attrezzo("tazzina", 1);
+		this.tazzina = new Attrezzo("tazzina", 3);
+		this.piuma = new Attrezzo("piuma", 1);
+		this.libro = new Attrezzo("libro", 5);
+		this.ps = new Attrezzo("ps", 5);
+		this.piombo = new Attrezzo("piombo", 10);
 		this.balena = new Attrezzo("balena", 10000);
+		
 		this.daTestare.addAttrezzo(tazzina);
+		this.borsaVariAttrezzi.addAttrezzo(piuma);
+		this.borsaVariAttrezzi.addAttrezzo(libro);
+		this.borsaVariAttrezzi.addAttrezzo(ps);
+		this.borsaVariAttrezzi.addAttrezzo(piombo);
 	}
 /***************************************addAttrezzo***********************************************/
 	@Test (expected=NullPointerException.class)
 	public void testAddAttrezzo_BorsaNull() {
-		assertFalse(isNull.addAttrezzo(tazzina));
+		assertFalse(borsaNull.addAttrezzo(tazzina));
 	}
 	
 	@Test //(expected=NullPointerException.class)
@@ -50,7 +63,7 @@ public class BorsaTest {
 /***************************************getAttrezzo***********************************************/
 	@Test (expected=NullPointerException.class)
 	public void testGetAttrezzo_BorsaNull() {
-		assertNull(isNull.getAttrezzo("tazzina"));
+		assertNull(borsaNull.getAttrezzo("tazzina"));
 	}
 	
 	@Test 
@@ -60,12 +73,24 @@ public class BorsaTest {
 	
 	@Test 
 	public void testGetAttrezzo_AttrezzoNotNull(){
-		assertNotNull(daTestare.getAttrezzo("tazzina"));
+		assertEquals(this.tazzina, daTestare.getAttrezzo("tazzina"));
 	}
+
+/****************************************************************************************************/
+	
+	@Test
+	public void testGetContenuto_InMappa_PerPeso() {
+		String msg = "(1, { piuma } ) ; (5, { libro, ps } ) ; (10, { piombo } )";
+		//assertEquals(msg, this.borsaVariAttrezzi.getContenutoRaggruppatoPerPeso().toString());
+	}
+	
+	
+	
+	
 /***************************isEmpty*********************************************************************/	
 	@Test (expected=NullPointerException.class)
 	public void testIsEmpty_BorsaNull() {
-		assertFalse(isNull.isEmpty());
+		assertFalse(borsaNull.isEmpty());
 	}
 	
 	@Test
@@ -74,13 +99,13 @@ public class BorsaTest {
 	}
 	@Test
 	public void testIsEmpty (){
-		assertTrue(vuota.isEmpty());
+		assertTrue(borsaVuota.isEmpty());
 	}
 
 /****************************hasAttrezzo**************************************************************************/
 	@Test (expected=NullPointerException.class)
 	public void testHasAttrezzo_BorsaNull() {
-		assertFalse(isNull.hasAttrezzo(""));
+		assertFalse(borsaNull.hasAttrezzo(""));
 	}
 	
 	@Test //(expected=NullPointerException.class)
@@ -91,7 +116,7 @@ public class BorsaTest {
 	
 	@Test (expected=NullPointerException.class)
 	public void testRemoveAttrezzo_BorsaNull(){
-		assertNull(isNull.removeAttrezzo("tazzina"));
+		assertNull(borsaNull.removeAttrezzo("tazzina"));
 	}
 	
 	@Test 

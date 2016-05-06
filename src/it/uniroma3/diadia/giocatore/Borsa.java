@@ -3,6 +3,7 @@ package it.uniroma3.diadia.giocatore;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.SortedSet;
 import java.util.TreeMap;
 import java.util.TreeSet;
 import java.util.ArrayList;
@@ -13,7 +14,6 @@ import java.util.HashMap;
 //import java.util.Map.Entry;
 
 import it.uniroma3.diadia.attrezzi.Attrezzo;
-import it.uniroma3.diadia.attrezzi.ComparatorePerNome;
 import it.uniroma3.diadia.attrezzi.ComparatorePerPeso;
 
 public class Borsa {
@@ -35,7 +35,7 @@ public class Borsa {
 	}
 	
 	public boolean addAttrezzo(Attrezzo attrezzo) {
-		if (attrezzo != null){
+		if (attrezzo != null && this.getPesoAttualeBorsa() + attrezzo.getPeso() < this.getPesoMax()){
 			this.attrezzi.put(attrezzo.getNome(), attrezzo);
 			this.pesoAttualeBorsa+=attrezzo.getPeso();
 			return true; 
@@ -93,10 +93,8 @@ public class Borsa {
 		return attrezziOrdinati;
 	}
 	
-	public List<Attrezzo> getContenutoOrdinatoPerNome() {
-		List<Attrezzo> attrezziOrdinati = new ArrayList<Attrezzo>(this.attrezzi.values());
-		Comparator<Attrezzo> comp = new ComparatorePerNome();
-		Collections.sort(attrezziOrdinati, comp);
+	public SortedSet<Attrezzo> getContenutoOrdinatoPerNome() {
+		SortedSet<Attrezzo> attrezziOrdinati = new TreeSet<Attrezzo>(this.attrezzi.values());
 		return attrezziOrdinati;
 	}
 	
