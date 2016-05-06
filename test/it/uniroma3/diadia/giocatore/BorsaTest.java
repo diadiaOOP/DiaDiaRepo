@@ -20,7 +20,7 @@ public class BorsaTest {
 	 * @throws java.lang.Exception
 	 */
 	
-	Borsa daTestare, isNull, vuota;
+	Borsa daTestare, isNull, vuota, ordinataPerPesoSgamata;
 	Attrezzo attrezzoNull, tazzina, balena;
 	@Before
 	public void setUp() throws Exception {
@@ -98,5 +98,11 @@ public class BorsaTest {
 	public void testRemoveAttrezzo_AttrezzoNull(){
 		assertNull(daTestare.getAttrezzo(""));
 	}
+/********************getBorsaOrderedByWeight***********************************************************/
+	@Test
+	public void testGetSortedSetOrdinatoPerPeso(){
+		assertEquals(this.daTestare.getSortedSetOrdinatoPerPeso());
+	}
+
 
 }

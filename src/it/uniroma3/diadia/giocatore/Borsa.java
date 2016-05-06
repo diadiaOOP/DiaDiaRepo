@@ -3,6 +3,7 @@ package it.uniroma3.diadia.giocatore;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.SortedSet;
 import java.util.TreeMap;
 import java.util.TreeSet;
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 //import java.util.Iterator;
 //import java.util.Map.Entry;
+import java.util.HashSet;
 
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 import it.uniroma3.diadia.attrezzi.ComparatorePerNome;
@@ -93,10 +95,8 @@ public class Borsa {
 		return attrezziOrdinati;
 	}
 	
-	public List<Attrezzo> getContenutoOrdinatoPerNome() {
-		List<Attrezzo> attrezziOrdinati = new ArrayList<Attrezzo>(this.attrezzi.values());
-		Comparator<Attrezzo> comp = new ComparatorePerNome();
-		Collections.sort(attrezziOrdinati, comp);
+	public SortedSet<Attrezzo> getContenutoOrdinatoPerNome() {
+		SortedSet<Attrezzo> attrezziOrdinati = new TreeSet<Attrezzo>(this.attrezzi.values());
 		return attrezziOrdinati;
 	}
 	
@@ -113,6 +113,14 @@ public class Borsa {
 			}
 		}
 		return mappa;
+	}
+	
+	public SortedSet<Attrezzo> getSortedSetOrdinatoPerPeso(){
+		List tmp = new ArrayList<Attrezzo>();
+		
+		tmp = getContenutoOrdinatoPerPeso();
+		SortedSet<Attrezzo> ris = new TreeSet<Attrezzo>(tmp);
+		return ris;
 	}
 
 	public void setPesoAttualeBorsa (int p){
