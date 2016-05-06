@@ -15,7 +15,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 
 import it.uniroma3.diadia.attrezzi.Attrezzo;
-import it.uniroma3.diadia.attrezzi.ComparatorePerNome;
 import it.uniroma3.diadia.attrezzi.ComparatorePerPeso;
 
 public class Borsa {
@@ -37,7 +36,7 @@ public class Borsa {
 	}
 	
 	public boolean addAttrezzo(Attrezzo attrezzo) {
-		if (attrezzo != null){
+		if (attrezzo != null && this.getPesoAttualeBorsa() + attrezzo.getPeso() < this.getPesoMax()){
 			this.attrezzi.put(attrezzo.getNome(), attrezzo);
 			this.pesoAttualeBorsa+=attrezzo.getPeso();
 			return true; 
