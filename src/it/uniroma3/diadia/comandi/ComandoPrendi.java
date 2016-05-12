@@ -19,7 +19,7 @@ public class ComandoPrendi implements Comando {
 			System.out.println("L'attrezzo cercato non e' presente in questa stanza!");
 			//System.out.println("Ti trovi in "+partita.getStanzaCorrente().getNome());
 		}
-		else if (partita.getGiocatore().getBorsa().getPesoAttualeBorsa() + daPrendere.getPeso() > partita.getGiocatore().getBorsa().getPesoMax()) {
+		else if (partita.getGiocatore().getBorsa().getPeso() + daPrendere.getPeso() > partita.getGiocatore().getBorsa().getPesoMax()) {
 			System.out.println("Non c'e' abbastanza spazio nella borsa per questo attrezzo!");
 			//System.out.println("Ti trovi in "+partita.getStanzaCorrente().getNome());
 		}

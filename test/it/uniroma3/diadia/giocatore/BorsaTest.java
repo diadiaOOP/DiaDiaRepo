@@ -10,11 +10,10 @@ import org.junit.Test;
 
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 import java.util.Map;
-import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
 import java.util.HashMap;
 import java.util.List;
-import java.util. LinkedList;
 import java.util.ArrayList;
 
 
@@ -29,12 +28,13 @@ public class BorsaTest {
 	 * @throws java.lang.Exception
 	 */
 	
-	Borsa daTestare, borsaVariAttrezzi, borsaNull, borsaVuota;
+	Borsa daTestare, borsaVariAttrezzi, borsaNull, borsaVuota, borsa;
 	Attrezzo attrezzoNull, tazzina, piuma, libro, ps, piombo, balena;
 	
 	@Before
 	public void setUp() throws Exception {
 		
+		this.borsa = new Borsa();
 		this.borsaVuota = new Borsa(0);
 		this.daTestare = new Borsa ();
 		this.borsaNull = null;
@@ -86,31 +86,43 @@ public class BorsaTest {
 	}
 
 /****************************************************************************************************/
-	
+		
 	@Test
-	public void testGetContenutoRaggruppatoPerPeso() {
-		Map<Integer,Set<Attrezzo>> mappaAttrezzi = new HashMap<>();
-		Set<Attrezzo> piombo10 = new HashSet<>();
-		piombo10.add(piombo);
-		Set<Attrezzo> libro_ps5 = new HashSet<>();
-		libro_ps5.add(libro);
-		libro_ps5.add(ps);
-		Set<Attrezzo> piuma1 = new HashSet<>();
-		piuma1.add(piuma);
-		mappaAttrezzi.put(10,piombo10);
-		mappaAttrezzi.put(1, piuma1);
-		mappaAttrezzi.put(5,libro_ps5);
-		assertEquals(mappaAttrezzi ,this.borsaVariAttrezzi.getContenutoRaggruppatoPerPeso());
+	public void testGetContenutoOrdinatoPerNome_NessunOggetto(){
+		Set<Attrezzo> listaAttrezzi = new TreeSet<>();
+		assertEquals(listaAttrezzi,this.borsa.getContenutoOrdinatoPerNome());
+	}
+
+	@Test
+	public void testGetContenutoOrdinatoPerNome_ConUnOggetto(){
+		Set<Attrezzo> listaAttrezzi = new TreeSet<>();
+		listaAttrezzi.add(piuma);
+		this.borsa.addAttrezzo(piuma);
+		assertEquals(listaAttrezzi,this.borsa.getContenutoOrdinatoPerNome());
 	}
 	
 	@Test
 	public void testGetContenutoOrdinatoPerNome() {
-		List<Attrezzo> listaAttrezzi = new LinkedList<>();
-		listaAttrezzi.add(libro);
-		listaAttrezzi.add(piombo);
+		Set<Attrezzo> tmpAttrezzi = new TreeSet<>();
+		tmpAttrezzi.add(libro);
+		tmpAttrezzi.add(piombo);
+		tmpAttrezzi.add(piuma);
+		tmpAttrezzi.add(ps);
+		assertEquals(tmpAttrezzi,this.borsaVariAttrezzi.getContenutoOrdinatoPerNome());
+	}
+	
+	@Test
+	public void  testGetContenutoOrdinatoPerPeso_NessunOggetto(){
+		List<Attrezzo> listaAttrezzi = new ArrayList<>();
+		assertEquals(listaAttrezzi,this.borsa.getContenutoOrdinatoPerPeso());
+	}
+
+	@Test
+	public void  testGetContenutoOrdinatoPerPeso_ConUnOggetto(){
+		List<Attrezzo> listaAttrezzi = new ArrayList<>();
 		listaAttrezzi.add(piuma);
-		listaAttrezzi.add(ps);
-		assertEquals(listaAttrezzi,this.borsaVariAttrezzi.getContenutoOrdinatoPerNome());
+		this.borsa.addAttrezzo(piuma);
+		assertEquals(listaAttrezzi,this.borsa.getContenutoOrdinatoPerPeso());
 	}
 	
 	@Test
@@ -123,7 +135,48 @@ public class BorsaTest {
 		assertEquals(listaAttrezzi,this.borsaVariAttrezzi.getContenutoOrdinatoPerPeso());
 	}
 	
+	@Test
+	public void testGetContenutoRaggruppatoPerPeso_NessunOggetto(){
+		Map<Integer,Set<Attrezzo>> mappaAttrezzi = new HashMap<>();
+		assertEquals(mappaAttrezzi ,this.borsa.getContenutoRaggruppatoPerPeso());
+	}
 	
+	@Test
+	public void testGetContenutoRaggruppatoPerPeso_ConUnOggetto(){
+		Map<Integer,Set<Attrezzo>> mappaAttrezzi = new HashMap<>();
+		Set<Attrezzo> piuma1 = new TreeSet<>();
+		piuma1.add(piuma);
+		mappaAttrezzi.put(1,piuma1);
+		this.borsa.addAttrezzo(piuma);
+		assertEquals(mappaAttrezzi ,this.borsa.getContenutoRaggruppatoPerPeso());
+	}
+	
+	@Test
+	public void testGetContenutoRaggruppatoPerPeso() {
+		Map<Integer,Set<Attrezzo>> mappaAttrezzi = new HashMap<>();
+		Set<Attrezzo> piombo10 = new TreeSet<>();
+		piombo10.add(piombo);
+		Set<Attrezzo> libro_ps5 = new TreeSet<>();
+		libro_ps5.add(libro);
+		libro_ps5.add(ps);
+		Set<Attrezzo> piuma1 = new TreeSet<>();
+		piuma1.add(piuma);
+		mappaAttrezzi.put(10,piombo10);
+		mappaAttrezzi.put(1, piuma1);
+		mappaAttrezzi.put(5,libro_ps5);
+		assertEquals(mappaAttrezzi ,this.borsaVariAttrezzi.getContenutoRaggruppatoPerPeso());
+		//System.out.println(mappaAttrezzi.toString());
+	}
+	
+	@Test
+	public void testGetSortedSetOrdinatoPerPeso(){
+		Set<Attrezzo> tmpAttrezzi = new TreeSet<>();
+		tmpAttrezzi.add(libro);
+		tmpAttrezzi.add(ps);
+		this.borsa.addAttrezzo(libro);
+		this.borsa.addAttrezzo(ps);
+		assertEquals(tmpAttrezzi, this.borsa.getSortedSetOrdinatoPerPeso());
+	}
 	
 /***************************isEmpty*********************************************************************/	
 	@Test (expected=NullPointerException.class)
@@ -161,5 +214,4 @@ public class BorsaTest {
 	public void testRemoveAttrezzo_AttrezzoNull(){
 		assertNull(daTestare.getAttrezzo(""));
 	}
-
 }
