@@ -36,7 +36,7 @@ public class Borsa {
 	
 	//modificare if se non funziona
 	public boolean addAttrezzo(Attrezzo attrezzo) {
-		if (attrezzo != null && this.getPeso() + attrezzo.getPeso() < this.getPesoMax() && !this.attrezzi.containsKey(attrezzo)){
+		if (attrezzo != null && this.getPeso() + attrezzo.getPeso() < this.getPesoMax() /*&& !this.attrezzi.containsKey(attrezzo)*/){
 			this.attrezzi.put(attrezzo.getNome(), attrezzo);
 			this.peso += attrezzo.getPeso();
 			return true; 
