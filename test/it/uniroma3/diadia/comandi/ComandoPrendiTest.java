@@ -22,7 +22,7 @@ public class ComandoPrendiTest {
 	private Partita partita;
 	private Attrezzo daPrendere;
 	private Stanza stanzaTest;
-	private Comando prendiTest;
+	private AbstractComando prendiTest;
 	private Borsa borsaTest;
 	
 	@Before
