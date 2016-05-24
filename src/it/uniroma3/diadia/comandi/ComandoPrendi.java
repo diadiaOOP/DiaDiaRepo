@@ -4,18 +4,15 @@ import it.uniroma3.diadia.Partita;
 import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
-public class ComandoPrendi implements Comando {
-
-	public String nomeAttrezzo;
-	
+public class ComandoPrendi extends AbstractComando {
 
 	@Override
 	public void esegui(Partita partita) {
 		// TODO Auto-generated method stub
 
 		Stanza stanzaCorrente = partita.getStanzaCorrente();
-		Attrezzo daPrendere = stanzaCorrente.getAttrezzo(nomeAttrezzo);
-		if (!stanzaCorrente.hasAttrezzo(nomeAttrezzo)) {
+		Attrezzo daPrendere = stanzaCorrente.getAttrezzo(super.getParametro());
+		if (!stanzaCorrente.hasAttrezzo(super.getParametro())) {
 			System.out.println("L'attrezzo cercato non e' presente in questa stanza!");
 			//System.out.println("Ti trovi in "+partita.getStanzaCorrente().getNome());
 		}
@@ -30,22 +27,7 @@ public class ComandoPrendi implements Comando {
 			//System.out.println(partita.getStanzaCorrente().getDescrizione());
 		}
 	}
-
-
-	@Override
-	public void setParametro(String parametro) {
-		// TODO Auto-generated method stub
-		this.nomeAttrezzo = parametro;
-
-	}
-
-	@Override
-	public String getParametro() {
-		// TODO Auto-generated method stub
-		return this.nomeAttrezzo;
-	}
-
-
+	
 	@Override
 	public String getNome() {
 		// TODO Auto-generated method stub
