@@ -4,23 +4,42 @@ import it.uniroma3.diadia.Partita;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 import it.uniroma3.diadia.giocatore.Borsa;
 
-public class ComandoPosa extends AbstractComando {
+public class ComandoPosa implements Comando {
 	
+	private String nomeAttrezzo;
+	
+
 	@Override
 	public void esegui(Partita partita) {
 		Borsa borsaDelGiocatore = partita.getGiocatore().getBorsa();
-		if (!(borsaDelGiocatore.hasAttrezzo(super.getParametro()))) {
+		if (!(borsaDelGiocatore.hasAttrezzo(this.nomeAttrezzo))) {
 			System.out.println("Non possiedi questo attrezzo!");
 			//System.out.println("Ti trovi in "+partita.getStanzaCorrente().getNome());
 		}
 		else {
-			Attrezzo daPosare =  borsaDelGiocatore.getAttrezzo(super.getParametro());
+			Attrezzo daPosare =  borsaDelGiocatore.getAttrezzo(this.nomeAttrezzo);
 			partita.getStanzaCorrente().addAttrezzo(daPosare);
 			System.out.println("Attrezzo posato.");
-			borsaDelGiocatore.removeAttrezzo(super.getParametro());
+			borsaDelGiocatore.removeAttrezzo(this.nomeAttrezzo);
 			//System.out.println(partita.getStanzaCorrente().getDescrizione());
 		}
 	}
+	
+	
+	
+	@Override
+	public void setParametro(String parametro) {
+		// TODO Auto-generated method stub
+		this.nomeAttrezzo = parametro;
+	}
+
+	@Override
+	public String getParametro() {
+		// TODO Auto-generated method stub
+		return this.nomeAttrezzo;
+	}
+
+
 
 	@Override
 	public String getNome() {

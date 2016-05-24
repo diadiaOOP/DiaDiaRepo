@@ -19,7 +19,7 @@ import org.junit.Test;
 public class ComandoPosaTest {
 
 	private Partita partitaTest;
-	private AbstractComando comandoPosaTest;
+	private Comando comandoPosaTest;
 	private Stanza stanzaTest;
 	private Borsa borsaTest;
 	
