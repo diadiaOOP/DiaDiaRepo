@@ -2,9 +2,7 @@ package it.uniroma3.diadia.comandi;
 
 import it.uniroma3.diadia.Partita;
 
-public class ComandoGuarda implements Comando {
-
-	private String msg;
+public class ComandoGuarda extends AbstractComando {
 	
 	@Override
 	public void esegui(Partita partita) {
@@ -16,21 +14,8 @@ public class ComandoGuarda implements Comando {
 				System.out.println(partita.getStanzaCorrente().toString());
 			else if (this.getParametro().equals("cfu"))
 				System.out.println("Ti rimangono " + partita.getGiocatore().getCfu() + " cfu");
-			else System.out.println("\"" + this.getParametro() + "\" non è un parametro valido");
+			else System.out.println("\"" + super.getParametro() + "\" non è un parametro valido");
 		} else System.out.println("Cosa vuoi guardare? Specificare un parametro!"); 
-	}
-
-	@Override
-	public void setParametro(String parametro) {
-		// TODO Auto-generated method stub
-		this.msg = parametro;
-
-	}
-
-	@Override
-	public String getParametro() {
-		// TODO Auto-generated method stub
-		return this.msg;
 	}
 
 	@Override
