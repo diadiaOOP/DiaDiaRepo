@@ -2,9 +2,9 @@ package it.uniroma3.diadia;
 
 import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
-import it.uniroma3.diadia.comandi.AbstractComando;
+import it.uniroma3.diadia.comandi.Comando;
 import it.uniroma3.diadia.comandi.FabbricaDiComandi;
-import it.uniroma3.diadia.comandi.FabbricaDiComandiRiflessiva;
+import it.uniroma3.diadia.comandi.FabbricaDiComandiSemplice;
 import it.uniroma3.diadia.giocatore.Borsa;
 
 import java.util.Scanner;
@@ -55,8 +55,8 @@ public class DiaDia {
 	 */
 	private boolean processaIstruzione(String istruzione) {
 
-		AbstractComando comandoDaEseguire;
-		FabbricaDiComandi factory = new FabbricaDiComandiRiflessiva();
+		Comando comandoDaEseguire;
+		FabbricaDiComandi factory = new FabbricaDiComandiSemplice();
 		comandoDaEseguire = factory.costruisciComando(istruzione);
 
 		comandoDaEseguire.esegui(this.partita);
